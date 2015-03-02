@@ -1,22 +1,20 @@
 package com.technobitia.search.examples;
 
-import java.util.List;
-
 import com.technobitia.search.client.SearchResultClient;
 import com.technobitia.search.exceptions.SearchResultException;
-import com.technobitia.search.model.SearchResult;
+import com.technobitia.search.model.SocialProfile;
 import com.technobitia.search.request.SearchRequest;
 
-public class SearchResultScraper {
+public class SocialProfileExtractorApp {
 
     public static void main(String[] args) throws SearchResultException {
         
-        String termToSearch = "surf";
+        String termToSearch = "san francisco 49ers";
         SearchRequest searchRequest = new SearchRequest.Builder(termToSearch).build();
         SearchResultClient searchResultClient = new SearchResultClient();
-        List<SearchResult> searchResults = searchResultClient.getSearchResults(searchRequest);
+        SocialProfile socialProfile = searchResultClient.extractSocialProfile(searchRequest);
         
-        System.out.println(searchResults);
+        System.out.println(socialProfile);
 
     }
 
